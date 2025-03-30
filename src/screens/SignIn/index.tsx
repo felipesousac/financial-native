@@ -9,11 +9,12 @@ import {
     View,
     ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types';
 import { AuthContext } from '../../contexts/auth';
+import { RootStackParamList } from '../../routes/routesTypes';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export default function SignIn(): React.JSX.Element {
-    const navigation = useNavigation<NativeStackNavigationProp<any>>();
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const { signIn, isLoadingAuth } = useContext(AuthContext);

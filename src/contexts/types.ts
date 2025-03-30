@@ -3,14 +3,12 @@ export interface IAuthProvider {
 };
 
 export interface IUser {
-    user? : {
-        id?: string;
-        name?: string;
-        email?: string;
-        balance?: number;
-        created_at?: Date;
-        updated_at?: Date;
-    }
+    id?: string;
+    name?: string;
+    email?: string;
+    balance?: number;
+    created_at?: Date;
+    updated_at?: Date;
 }
 
 export interface IContext extends IUser {
@@ -18,6 +16,6 @@ export interface IContext extends IUser {
     signIn: (email: string, password: string) => Promise<void>;
     signOut: () => Promise<void>;
     isLoadingAuth: boolean;
-    signed: boolean;
+    isUserSignedIn: boolean;
     loading: boolean;
 }

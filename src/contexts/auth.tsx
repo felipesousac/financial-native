@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { api } from '../services/api';
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IContext, IAuthProvider, IUser } from './types';
 import { KEY_TOKEN } from '../utils/asyncStorageKeys';
@@ -13,7 +12,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     const [isLoadingAuth, setIsLoadingAuth] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const navigation = useNavigation<NativeStackNavigationProp<any>>();
+    const navigation = useNavigation();
 
     useEffect(() => {
         const loadAsync = async () => {
@@ -93,7 +92,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     };
 
     return (
-        <AuthContext.Provider value={{signed: !!user, ...user, signUp, signIn, signOut, isLoadingAuth, loading}}>
+        <AuthContext.Provider value={{isUserSignedIn: !!user, ...user, signUp, signIn, signOut, isLoadingAuth, loading}}>
             {children}
         </AuthContext.Provider>
     );

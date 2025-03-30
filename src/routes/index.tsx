@@ -5,7 +5,7 @@ import { AuthContext } from '../contexts/auth';
 import { ActivityIndicator, View } from 'react-native';
 
 function Routes(): React.JSX.Element {
-    const { signed, loading } = useContext(AuthContext);
+    const { isUserSignedIn, loading } = useContext(AuthContext);
 
     if (loading) {
         return (
@@ -23,7 +23,7 @@ function Routes(): React.JSX.Element {
     }
 
     return (
-        signed ? <AppRoutes/> : <AuthRoutes/>
+        isUserSignedIn ? <AppRoutes/> : <AuthRoutes/>
     )
 }
 

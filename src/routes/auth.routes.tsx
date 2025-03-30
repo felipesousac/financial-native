@@ -2,8 +2,9 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
+import { RootStackParamList } from './routesTypes';
 
-const AuthStack = createStackNavigator();
+const AuthStack = createStackNavigator<RootStackParamList>();
 
 function AuthRoutes(): React.JSX.Element {
     return (
